@@ -1,0 +1,246 @@
+This software has been around at least since 1990 and is the 
+product of many folks' work.  We are truly indebted the the 
+following for their contributions:
+
+  Alvaro Aguilera
+  Andre Albsmeier
+  Bram <bram-ulynsnk@mail.wizbit.be>	invocation fixes for pcl2fax
+  Bruno Almeida do Lago			"modem echoes dialstring" handling, manpage documentation
+  Carol Almquist			"modem dial gives DLE+ETX" handling
+  Matthias Apitz
+  a.pogoda@web.de
+  Ronald Appelfelder
+  Heinz-Ado Arnolds
+  Jay R. Ashworth
+  Paolo Basenghi			faxadduser -c option
+  Abramo Bagnara
+  Chris Bainbridge
+  Charly Baker
+  Toki Barron
+  Stephan Bauer
+  Giovanni Bechis			OpenBSD socket portability
+  Chris Beekhuis
+  George Bell
+  Dmitry Bely
+  Peter Bentley
+  Thomas Biege
+  David Birnbaum
+  Trevor Blackwell
+  Frédéric Bor				sendfax to pass e-mail address to faxcover
+  Siegfried Bosch
+  Marc Boucher
+  Ross Boylan
+  Lieven Bridts				Flemish dictionary translation (nl_BE)
+  Frank Brock
+  Piete Brooks
+  Holger Bruenjes
+  James Budiono
+  Glen Burkhardt
+  Bill Campbell
+  Filippo Carletti
+  Yves Carlier
+  Ed Casas
+  Brent Chapman
+  Jonathon Chen
+  Camden Clarke
+  Robert Colquhoun
+  Ken Cornetet
+  Ralf Corsepius			configure script tweak for gcc-4.3
+  Tom Corson
+  A. Costa				man page typo corrections
+  Claudiu Cristea			Romanian dictionary translation
+  Alan Crosswell
+  Seth Cuaiklin
+  Klaus Darilion			auto-rotate.ps
+  Albert DeKnuydt
+  Mark Diekhans
+  Reeby Dobalina
+  Charles Duffy				var_prefix in parseQFile
+  Paul Eggert
+  Denys Fedotov				Russian and Ukranian dictionary translations
+  Greg Ferguson
+  Steve Fine
+  Alessandro Fiorino
+  Juergen Fischer
+  Kevin Fleming
+  John Florian
+  Andrew Ford
+  Patrice Fournier
+  Marco de Freitas
+  Chris Frey				g++ warning cleanup
+  Vyacheslav Frolov
+  Andrea Gabellini
+  John Gilman
+  Tim Gunn
+  Philip Gwyn				pcl2fax scripting
+  Craig Haskins				Class 2 EOFB bit order fix
+  William Helen				Chinese dictionary translation
+  Kris Henderson
+  Wolfgang Henke
+  Sascha Herrmann
+  Tom Hintz				Solaris compatibility modifications
+  Viet Hoang
+  Carsten Hoeger
+  Bert Hooyman
+  Ken Hornstein
+  Lee Howard
+  Dirk Husemann
+  Ludovic Harlaut			fix to octet-stream MIME encoder
+  John Interrante
+  Sascha Ittner
+  Eliran Itzhak				Hebrew dictionary translation
+  Damiam Ivereigh
+  Thomas Jarosch			cppcheck fixes, libtiff v4 fix
+  Bernard Jech
+  Dennis Jenkins			PASV/EPSV port range restrictions, code cleanup
+  Nico Kadel-Garcia			original fax-to-mail scripts, dialrules.ext/uk
+  Tadeusz Andrzej Kadlubowski
+  Sean Kamath
+  Jonathan Kamens
+  Brian Katzung
+  Dimitry Ketov
+  Joshua Kinard				LDAP authentication support
+  Masao Kitano
+  Wolfgang Klein			German translation modifications
+  Steffan Klipsch
+  Carsten Koch
+  John T Kohl
+  Hannu Koivisto
+  Joe Konecny				typerules filename quoting
+  Arjen de Korte
+  Scott Kramer
+  Bernd Krumböck			HP-UX portability fixes
+  Firat Kucuk (FÄ±rat KÃÃÃK)		Turkish dictionary translations
+  Dmitry V. Kustov
+  Ken Lalonde
+  Ilguiz Latypov
+  Ivan Laurette				RE.c++ init memset initialization for PPC
+  Rob Leadbeater
+  Sam Leffler
+  Guillaume Legoupil
+  Dario Lesca
+  Tilo Levante				login NULL pointer bug fix
+  Rickard Linck
+  Todd Lipcon
+  Tom Lislegaard
+  Dirk Lohbeck				dialrules.world
+  Greg Luck
+  Rick Lyons
+  Rob MacKinnon
+  Andy MacNamara
+  Riccardo Magliocchetti		make "regarding" available from parseQFile, faxcover -M from-mail-address
+  Philippe Maladjian
+  Lionel Mamane
+  Pierluigi Mangani
+  Martí Maria				ITUFAX colorspace conversion
+  Hendrik Maryns			spelling correction in sendfax
+  Ed McCreight
+  Campbell McKilligan
+  Kevin McManamon
+  Bodo Meissner
+  Les Mikesell
+  John Miller
+  Aldo Mini
+  Boris Mironov
+  Bill Morrow
+  Seth Mos
+  Andy Moskoff
+  Moritz Muehlenhoff			code hardening
+  Torsten Mueller
+  Chris Munonye
+  Rob Newberry
+  Darren Nickerson
+  Andrea Nicolini
+  Dag Nygren
+  Helge Oldach				multiple filetypes in mail
+  Jonas Olsson
+  Giulio Orsero				JBIG conversion to MMR in faxrcvd, shell fixes
+  Dave Packer
+  Davide Pagnin				accounting bug fixes and enhancements
+  Paolo <oopla@users.sf.net>		faxinfo output formatting options
+  Chris Parsons
+  Michael Pedersen
+  Ludovic Pepin
+  John Perkins				Solaris DSO building
+  Damon Permezel
+  Simon Perry
+  Diego Pettena
+  Frank Peters
+  Reinhard Pfau				improvements to client FIFO cleanup
+  Vu Pham
+  David Pike
+  Amir Plivatsky
+  John Patrick Poet
+  Michele Petrazzo			init script enhancements
+  Harald Pollack
+  Brian Postow				improved frame checking enhancement
+  Andreas Pretzsch
+  Bernd Proissl
+  Zesen Qian (钱泽森)			improved Chinese translation
+  Andy Rabagliati
+  Jean-Pierre Radley			man page corrections, SCO Unix particulars, PCL typerules
+  Nenad Radosavljevic			Serbian dictionary translation
+  Ron Record				SCO DSO building, SCO Unix particulars
+  Eric Rescorla
+  Matthew Rice
+  Tim Rice
+  Pedro Roçadas
+  Daniel Robbins
+  Marshall Rose
+  Daniel Rosenblatt
+  Robin Schaufler
+  Joel Rosi-Schwartz
+  Tim Rylance
+  Joseph E. Sacco
+  Giuseppe Sacco
+  Michael Salzmann
+  Travis Schafer			LogSend and LogRecv modem config options
+  Sven Schmidt
+  Steven Schoch				faxrcvd faxinfo text parsing
+  John Sellens
+  Chris Severance			documentation fixes, scripting improvements
+  Simon <iahnl@iah.nl>
+  Blas Rodriguez Somoza
+  Vilmos Soti
+  Alan Sparks
+  Andy Sparrow
+  Marco Steinacher
+  Iain Stevenson
+  Marius Strobl
+  John Sucaet
+  Thomas A. Szybist
+  Mikhail T.
+  Kazuhide Takahashi
+  Daryl Thachuk
+  Brent Townshend
+  Steve Tuckner
+  Steve Underwood			NSF identifications
+  Aidan Van Dyk
+  Servaas Vandenberghe			dialrules-pabx.be
+  Paul Vixie
+  David Vrona
+  Rich Walker
+  Norbert Warmuth
+  Phil Watkinson
+  James Werkowski
+  Brian K. White			euid detection improvement in faxsetup
+  Peter White
+  Bruce Whittaker
+  Chas Williams
+  John Williams
+  Steve Williams
+  John Wolfe
+  Scott Woodard
+  Bill Young
+  Bruce Young
+  Christian Zahl
+
+We appreciate and recognize the upstreamed contributions from these 
+distributions:
+
+Debian Linux, FreeBSD, Gentoo Linux, Mandrake Linux, NetBSD, SuSE Linux
+
+For donated hardware, technical expertise, and other assistence we thank 
+these manufacturers:
+
+Comtrol, Digi International, Eicon Networks, Mainpine Ltd., MultiTech Systems

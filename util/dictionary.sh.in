@@ -1,0 +1,61 @@
+#! @SCRIPT_SH@
+#    $Id: dictionary.sh.in 1073 2011-12-13 23:37:07Z faxguy $
+
+LANG=`echo $LANG | sed 's/^cn_/zh_/'`	# fix wrong Chinese locale
+
+case "$LANG" in
+    nl_BE*)
+	. bin/dict/nl_BE
+	;;
+    pl_*)
+	. bin/dict/pl
+	;;
+    fr_*)
+	. bin/dict/fr
+	;;
+    it_*)
+	. bin/dict/it
+	;;
+    pt_BR*)
+	. bin/dict/pt_BR
+	;;
+    pt_*)
+	. bin/dict/pt
+	;;
+    es_*)
+	. bin/dict/es
+	;;
+    de_*)
+	. bin/dict/de
+	;;
+    ro_*)
+	. bin/dict/ro
+	;;
+    ru_*)
+	. bin/dict/ru
+	;;
+    tr_*)
+	. bin/dict/tr
+	;;
+    zh_*)
+	. bin/dict/zh
+	;;
+    sr_*)
+	. bin/dict/sr
+	;;
+    uk_*)
+	. bin/dict/uk
+	;;
+    he_*)
+	. bin/dict/he
+	;;
+    *)
+	. bin/dict/en
+	;;
+esac
+
+#
+# Modify LANG according to CHARSET
+#
+LANG="`echo $LANG | $SED 's/\..*//'`.$CHARSET"
+export LANG

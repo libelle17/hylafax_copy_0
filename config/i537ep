@@ -1,0 +1,34 @@
+# $Id: i537ep 889 2008-10-14 03:01:01Z faxguy $
+#
+# prototype config for the Intel 537EP chipset soft-modem
+#
+
+# CONFIG:CLASS1:.*:537EP:.*: Manufacturer=Intel Model=537EP
+#
+# BEGIN-SERVER
+# END-SERVER
+
+ModemType:		Class1		# use this to supply a hint
+ModemRate:		38400		# rate for DCE-DTE communication
+ModemFlowControl:	rtscts
+
+ModemMfrQueryCmd:	ATI2		# Intel Corporation
+ModemModelQueryCmd:	ATI3		# 537EP
+ModemRevQueryCmd:	ATI4		# 537EP  PRE-Release 2.70.95.0  - Jul 26 2005 - 11:59:21
+
+Class1TMConnectDelay:	400		# counteract quick CONNECT response
+
+#
+# AT+VSM=? response as follows...
+#
+# 0,"8-Bit Linear",8,0,(4800,7200,8000,9600,11025),(0),(0)
+# 1,"UNSIGNED PCM",16,0,(4800,7200,8000,9600,11025),(0),(0)
+# 2,"4-Bit ADPCM",4,0,(4800,7200,8000,9600,11025),(0),(0)
+# 128,"8-Bit Linear",8,0,(4800,7200,8000,9600,11025),(0),(0)
+# 129,"16-Bit Linear",16,0,(4800,7200,8000,9600,11025),(0),(0)
+# 132,"4-Bit ADPCM",4,0,(4800,7200,8000,9600,11025),(0),(0)
+# 140,"CL1",8,0,(4800,7200,8000,9600,11025),(0),(0)
+# 141,"3-Bit ADPCM",3,0,(4800,7200,8000,9600,11025),(0),(0)
+# 130,"A-Law",8,0,(4800,7200,8000,9600,11025),(0),(0)
+# 131,"U-Law",8,0,(4800,7200,8000,9600,11025),(0),(0)
+

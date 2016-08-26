@@ -1,0 +1,108 @@
+#	$Id: TODO 868 2008-08-07 14:16:24Z faxguy $
+
+#
+# These are recent to-do items that have been added.  (Time to manage this file again.)
+#
+
+modemused in q-file is not populated on requeues
+ability to customize the date/time presentation in hfaxd/faxstat output
+abort more quickly when client SUSP or DELE
+speed up probemodem and faxaddmodem modem queries
+teach hfaxd to use /etc/hosts.allow
+encrypted communications would be nice, at least an MD5'ed password or something
+Unfortunately, FaxModem::recvResetPage(TIFF) doesn't really work (anymore?).
+sendfax -d -d -d or -z uses job groups now, but shouldn't repeat params
+credible reports of faxmodem losing the modem after a while
+if you abort a job during a call the "calls" notify report still says 0
+Make clients poll the system for default page size rather than using a compiled-in default.
+
+If HylaFAX doesn't standardize internally on a particular bit orientation we will see problems on MSB2LSB systems 
+in cutExtraEOFB as well as in the lastbyte zerobit counting because we'd come at the data from the wrong 
+direction.  Check up on this.
+
+Killed a job at an untimely moment that hung faxsend.  Had to kill -9 faxsend...
+
+Mar 14 12:24:36 gollum FaxSend[9049]:   "[ghiGHI]" = "4"
+Mar 14 12:24:36 gollum FaxSend[9049]:   "[jklJKL]" = "5"
+Mar 14 12:24:36 gollum FaxSend[9049]:   "[mnoMNO]" = "6"
+Mar 14 12:24:36 gollum FaxSend[9049]:   "[prsPRS]" = "7"
+Mar 14 12:24:36 gollum FaxSend[9049]:   "[tuvTUV]" = "8"
+Mar 14 12:24:36 gollum FaxSend[9049]:   "[wxyWXY]" = "9"
+Mar 14 12:24:36 gollum FaxSend[9049]:   "[^+0-9]+" = ""
+Mar 14 12:24:36 gollum FaxSend[9049]:   "^011" = "+"
+Mar 14 12:24:36 gollum FaxSend[9049]:   "^1" = "+1"
+Mar 14 12:24:36 gollum FaxSend[9049]:   "^[^+]" = "+1360&"
+Mar 14 12:24:36 gollum FaxSend[9049]: ]
+Mar 14 12:24:36 gollum FaxSend[9049]: DialString := [
+Mar 14 12:24:36 gollum FaxSend[9049]:   "[- ^I.]+" = ""
+Mar 14 12:24:36 gollum FaxQueuer[8839]: FIFO RECV "Kclient/9051:989"
+Mar 14 12:24:36 gollum FaxSend[9049]:   "\(" = ""
+Mar 14 12:24:36 gollum FaxQueuer[8839]: KILL JOB 989
+Mar 14 12:24:53 gollum FaxQueuer[8839]: FIFO RECV "Kclient/9055:989"
+Mar 14 12:24:53 gollum FaxQueuer[8839]: KILL JOB 989
+Mar 14 12:24:53 gollum FaxQueuer[8839]: FIFO SEND client/9055 msg "K!"
+Mar 14 12:39:58 gollum FaxQueuer[8839]: JOB 989 (active dest +1360400 pri 126 tts 0:00 killtime 2:42:06): CMD DONE: exit status 0x9
+Mar 14 12:39:58 gollum FaxQueuer[8839]: Send program terminated abnormally with exit status 0x9
+Mar 14 12:39:58 gollum FaxQueuer[8839]: DOC UNREF: docq/doc1032.ps;f0 files docq/doc1032.ps;f0
+Mar 14 12:39:58 gollum FaxQueuer[8839]: DOC UNREF: expunge imaged files
+Mar 14 12:39:58 gollum FaxQueuer[8839]: NOTIFY: bin/notify 'doneq/q989' 'killed' ''
+
+
+#
+# These are old (ancient, really) entries that deserve some investigation
+# and cleanup or addressing.
+#
+
+BH job group support is broken
+B  file write errors during receive are not processed correctly
+B  polling bug in Class 1 driver (reset FCF sndr/rcvr bit at start of Phase B)
+H  fill-in VRFY op to support least-cost routing over a WAN
+H  polled transmission of documents (use SEP and PWD; add registration
+   tools and query status support)
+H  use PWD in TSI qualification
+H  voice support integration
+H  VOICE/ANSWER button support for ZyXEL
+M  optionally replace info directory with a hashed database file to
+   reduce overhead on busy systems
+M  add faxq lock to avoid naive users starting multiple queuers
+BL race in queuer/Dispatcher collecting child process status (hack sleep
+   in child to give parent time to install SIGCLD handler for now)
+BL aborted receives get an extra page written (use TIFFUnlinkDirectory)
+L  change receive timeout to be based on seeing EOL code
+L  faxmove program, analogous to lpmove
+L  permit call type deduction logic used when answering an inbound call to
+   be user-configurable (useful for distinctive ring)--not so important now
+   with configurable distinctive ring support builtin
+
+---------------
+BH     report#: 0001
+       problem: SIGSEGV in hfaxd after pagesend completed and
+                faxq finished the job
+          refs: 23/09/1996 Matthias.Apitz@SOFTCON.de
+                23/09/1996 sam@cthulhu.engr.sgi.com
+          file: problemReports/0001
+---------------
+B      report#: 0002
+       problem: faxconfig(1M) does not work for PostScriptTimeout: value
+          refs: 23/09/1996 Matthias.Apitz@SOFTCON.de
+                23/09/1996 sam@cthulhu.engr.sgi.com
+          file: problemReports/0001
+---------------
+L      report#: 0016
+       problem: hfaxd only uses LogFacility from hfaxd.conf for
+                client connections and runs with default LOG_FAX
+                in parrent proc
+          refs: -
+          file: -
+---------------
+O      report#: 0021
+       problem: stopping faxq(1M) with TimeOfDay:
+          refs: 17/11/1997 ytrudeau@jyrmatec.com
+          file: problemReports/0021
+---------------
+L      report#: 0022
+       problem: LineWrap: at word boundaries
+          refs: 19/11/1997 patrick@cre8tivegroup.com
+          file: problemReports/0022
+
+--

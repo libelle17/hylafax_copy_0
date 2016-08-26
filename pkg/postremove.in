@@ -1,0 +1,19 @@
+#
+# $Id: postremove.in 2 2005-11-11 21:32:03Z faxguy $
+#	Tim Rice
+#
+#	postremove
+#
+
+if test -d @SPOOL@
+then
+	echo "\n\nYou will need to remove @SPOOL@"
+	echo "after saving any files you want to save\n"
+	echo "rm -fr @SPOOL@\n"
+
+# I'll automate this part when I get time
+	echo "Remove @SBIN@/faxqclean from root's crontab"
+	echo "Remove @SBIN@/faxcron from uucp's crontab"
+fi
+
+exit 0

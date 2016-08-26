@@ -1,0 +1,44 @@
+# $Id: eicon 1030 2010-11-19 03:33:18Z faxguy $
+#
+# prototype config for Eicon Diva
+#
+
+# CONFIG:CLASS1:Eicon*:.*:.*: Manufacturer=Eicon Model=Diva
+#
+# BEGIN-SERVER
+# END-SERVER
+
+ModemType:		Class1		# use this to supply a hint
+
+#
+# Enable this to set Caller*ID Number
+#
+#ModemSetOriginCmd:	AT+iO%d		
+
+#
+# Make sure the modem gives us Caller*ID in a legible way.
+#
+ModemResetCmds:         AT#CID=14
+
+#
+# Eicon recommends initializing with AT+iQ=a1 where "1" is
+# the controller number.  This command binds the tty to that
+# controller and bypasses the "channel pool" approach.
+#
+# There are 4 controllers on the 4BRI card.
+# For each controller You have to configure 2 ttyds<xx> devices.
+#
+# 1st controller - ttyds01 (AT#CID=14+iQ=a1), ttyds02 (AT#CID=14+iQ=a1)
+# 2nd controller - ttyds03 (AT#CID=14+iQ=a2), ttyds04 (AT#CID=14+iQ=a2)
+# 3rd controller - ttyds05 (AT#CID=14+iQ=a3), ttyds06 (AT#CID=14+iQ=a3)
+# 4th controller - ttyds07 (AT#CID=14+iQ=a4), ttyds08 (AT#CID=14+iQ=a4) 
+#
+# Bind Modem to Controller N Line M:      AT+iQ=aN+iK=aM
+#
+#ModemResetCmds:         AT#CID=14+iQ=a1
+
+#
+# These should match the modem responses for DID and Caller*ID.
+#
+CallIDPattern:		"DAD: "
+CallIDPattern:		"CID: "

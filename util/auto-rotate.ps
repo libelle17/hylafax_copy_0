@@ -1,0 +1,7 @@
+%!PS
+  %   Sequence to set up for a single page size, auto fit all pages.
+  << /Policies << /PageSize 3 >>
+     /InputAttributes currentpagedevice /InputAttributes get    %current dict
+     dup { pop 1 index exch undef } forall    % remove all page sizes
+     dup 0 << /PageSize [ 0 618 1600 99999 ] >> put    % [ min-w min-h max-w max-h ]
+  >> setpagedevice

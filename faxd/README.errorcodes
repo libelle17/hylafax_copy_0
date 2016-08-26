@@ -1,0 +1,256 @@
+E000-E049 : call failures
+E000      : Call successful
+E001      : Busy signal detected
+E002      : No carrier detected
+E003      : No answer from remote
+E004      : No local dialtone
+E005      : Invalid dialing command
+E006      : Unknown problem
+E007      : Carrier established, but Phase A failure
+E008      : Data connection established (wanted fax)
+E009      : Glare - RING detected
+E010      : Blacklisted by modem
+E011      : Ringback detected, no answer without CED
+E012      : Ring detected without successful handshake
+E013      : V.34/V.8 handshake incompatibility
+
+E050-E099 : non Class-specific fax protocol failures
+E050      : Missing EOL after 5 seconds
+E051      : Procedure interrupt received, job terminated
+E052      : Write error to TIFF file
+
+E100-E199 : Class 1-specific protocol failure
+E100      : Failure to receive silence (synchronization failure).
+E101      : Failure to raise V.21 transmission carrier.
+E102      : No sender protocol (T.30 T1 timeout)
+E103      : RSPREC error/got DCN (sender abort)
+E104      : RSPREC invalid response received
+E105      : Failure to train modems
+E106      : RSPREC error/got EOT
+E107      : Can not continue after DIS/DTC
+E108      : COMREC received DCN (sender abort)
+E109      : No response to RNR repeated 3 times.
+E110      : COMREC invalid response received
+E111      : V.21 signal reception timeout; expected page possibly not received in full
+E112      : Failed to properly detect high-speed data carrier.
+E113      : Received invalid CTC signal in V.34-Fax.
+E114      : Failed to properly open V.34 primary channel.
+E115      : Received premature V.34 termination.
+E116      : Failed to properly open V.34 control channel.
+E117      : COMREC invalid response to repeated PPR received
+E118      : T.30 T2 timeout, expected signal not received
+E119      : COMREC invalid partial-page signal received
+E120      : Cannot synchronize ECM frame reception.
+E121      : ECM page received containing no image data.
+E122      : Remote has no T.4 receiver capability
+E123      : DTC received when expecting DIS (not supported)
+E124      : COMREC error in transmit Phase B/got DCN
+E125      : COMREC invalid command received/no DIS or DTC
+E126      : No receiver protocol (T.30 T1 timeout)
+E127      : Stop and wait failure (modem on hook)
+E128      : Remote fax disconnected prematurely
+E129      : Procedure interrupt (operator intervention)
+E130      : Unable to transmit page (giving up after RTN)
+E131      : Unable to transmit page (giving up after 3 attempts)
+E132      : Unable to transmit page (NAK at all possible signalling rates)
+E133      : Unable to transmit page (NAK with operator intervention)
+E134      : Fax protocol error (unknown frame received)
+E135      : Fax protocol error (command repeated 3 times)
+E136      : DIS/DTC received 3 times; DCS not recognized
+E137      : Failure to train remote modem at 2400 bps or minimum speed
+E138      : Receiver flow control exceeded timer.
+E139      : No response to RR repeated 3 times.
+E140      : COMREC invalid response received to RR.
+E141      : No response to CTC repeated 3 times.
+E142      : COMREC invalid response received to CTC.
+E143      : Failure to transmit clean ECM image data.
+E144      : No response to EOR repeated 3 times.
+E145      : COMREC invalid response received to EOR.
+E146      : COMREC invalid response received to PPS.
+E147      : No response to PPS repeated 3 times.
+E148      : Unable to establish message carrier
+E149      : Unspecified Transmit Phase C error
+E150      : No response to MPS repeated 3 tries
+E151      : No response to EOP repeated 3 tries
+E152      : No response to EOM repeated 3 tries
+E153      : No response to PPM repeated 3 tries
+E154      : Timeout waiting for Phase C carrier drop.
+E155      : PPM received with no image data.  To continue risks receipt confirmation.
+
+E200-E299 : Class 2-specific protocol failure
+E200      : Unable to request polling operation (modem may not support polling)
+E201      : Unable to setup polling identifer (modem command failed)
+E202      : Unable to setup selective polling address (modem command failed)
+E203      : Unable to setup polling password (modem command failed)
+E204      : Unable to send password (modem command failed)
+E205      : Unable to send subaddress (modem command failed)
+E206      : Unable to restrict minimum transmit speed to %s (modem command failed)
+E207      : Unable to setup session parameters prior to call (modem command failed)
+E208      : Unable to set session parameters
+E209      :
+E210      : Unknown hangup code
+E211      : Normal and proper end of connection
+E212      : Ring detect without successful handshake
+E213      : Call aborted,  from +FK or <CAN>
+E214      : No loop current
+E215      : Ringback detected, no answer (timeout)
+E216      : Ringback detected, no answer without CED
+E217      : Unspecified Phase A error
+E218      : No answer (T.30 T1 timeout)
+E219      : Unspecified Transmit Phase B error
+E220      : Remote cannot be polled
+E221      : COMREC error in transmit Phase B/got DCN
+E222      : COMREC invalid command received/no DIS or DTC
+E223      : RSPREC error/got DCN
+E224      : DCS sent 3 times without response
+E225      : DIS/DTC received 3 times; DCS not recognized
+E226      : Failure to train at 2400 bps or +FMINSP value
+E227      : RSPREC invalid response received
+E228      : Unspecified Transmit Phase C error
+E229      : Unspecified Image format error
+E230      : Image conversion error
+E231      : DTE to DCE data underflow
+E232      : Unrecognized Transparent data command
+E233      : Image error, line length wrong
+E234      : Image error, page length wrong
+E235      : Image error, wrong compression code
+E236      : Unspecified Transmit Phase D error, including +FPHCTO timeout between data and +FET command
+E237      : RSPREC error/got DCN
+E238      : No response to MPS repeated 3 times
+E239      : Invalid response to MPS
+E240      : No response to EOP repeated 3 times
+E241      : Invalid response to EOP
+E242      : No response to EOM repeated 3 times
+E243      : Invalid response to EOM
+E244      : Unable to continue after PIN or PIP
+E245      : Unspecified Receive Phase B error
+E246      : RSPREC error/got DCN
+E247      : COMREC error
+E248      : T.30 T2 timeout, expected page not received
+E249      : T.30 T1 timeout after EOM received
+E250      : Unspecified Phase C error, including too much delay between TCF and +FDR command
+E251      : Missing EOL after 5 seconds (section 3.2/T.4)
+E252      : DCE to DTE buffer overflow
+E253      : Bad CRC or frame (ECM or BFT modes)
+E254      : Unspecified Phase D error
+E255      : RSPREC invalid response received
+E256      : COMREC invalid response received
+E257      : Unable to continue after PIN or PIP, no PRI-Q
+E258      : Command or signal 10 sec. timeout
+E259      : Cannot send: +FMINSP > remote's +FDIS(BR) code
+E260      : Cannot send: remote is V.29 only, local DCE constrained to 2400 or 4800 bps
+E261      : Remote station cannot receive (DIS bit 10)
+E262      : +FK aborted or <CAN> aborted
+E263      : +Format conversion error in +FDT=DF,VR, WD,LN Incompatible and inconvertable data format
+E264      : Remote cannot receive
+E265      : After +FDR, DCE waited more than 30 seconds for XON from DTE after XOFF from DTE
+E266      : In Polling Phase B, remote cannot be polled
+E267      : No answer (ANSam detected)
+E268      : No answer (CED detected)
+E269      : No answer (V.8 complete)
+E270      : No answer (Phase 3 complete)
+E271      : No answer (Phase 3 timeout)
+E272-279 (currently unused)
+E280      : Procedure interrupt (operator intervention)
+E281      : Unable to transmit page (giving up after RTN)
+E282      : Unable to transmit page (giving up after 3 attempts)
+E283      : Unable to transmit page (NAK at all possible signalling rates)
+E284      : Unable to transmit page (NAK with operator intervention)
+E285      : Modem protocol error (unknown post-page response)
+E286      : Batching protocol error
+E287      : Communication failure during Phase B/C
+E288      : Communication failure during Phase B/C (modem protocol botch)
+
+E300-E399 : Non-T.30 client or server failure
+E301      : Receive aborted due to operator intervention
+E302      : Problem reading document directory
+E303      : Internal botch; %s post-page handling string "%s"
+E304      : Maximum receive page count exceeded, call terminated
+E305      : Could not fork for scripted configuration.
+E306      : Bad exit status %#o for '%s'
+E307      : Could not open a pipe for scripted configuration.
+E308      : ANSWER: CALL REJECTED
+E309      : ANSWER: Call deduced as %s, but told to answer as %s; call ignored
+E310      : External getty use is not permitted {E310}
+E311      : %s: could not create
+E312      : "%s: can not fork: %s
+E313      : ERROR: Unknown status
+E314      : Can not open document file %s
+E315      : Can not set directory %u in document file %s
+E316      : Error reading directory %u in document file %s
+E317      : Too many pages in submission; max %u
+E318      : Unable to lock shared document file
+E319      : Unable to open shared document file
+E320      : Unable to create document file
+E321      : Converted document is not valid TIFF
+E322      : Could not reopen converted document to verify format
+E323      : Job contains no documents
+E324      : Modem does not support polling
+E325      : Kill time expired
+E326      : Invalid or corrupted job description file
+E327      : REJECT: Unable to convert dial string to canonical format
+E328      : REJECT: Requested modem %s is not registered
+E329      : REJECT: No work found in job file
+E330      : REJECT: Page width (%u) appears invalid
+E331      : REJECT: Job expiration time (%u) appears invalid
+E332      : REJECT: Time-to-send (%u) appears invalid
+E333      : REJECT: Too many attempts to dial
+E334      : REJECT: Too many attempts to transmit: %u, max %u
+E335      : REJECT: Too many pages in submission: %u, max %u
+E336      : REJECT: Modem is configured as exempt from accepting jobs
+E337      : Blocked by concurrent calls
+E338      : Delayed by time-of-day restrictions
+E339      : Delayed by outbound call staggering
+E340      : Could not fork to prepare job for transmission
+E341      : Could not fork to start job transmission
+E342      : Delayed by prior call
+E343      : Send program terminated abnormally; unable to exec %s 
+E344      : Job interrupted by user
+E345      : Job aborted by request
+E346      : Delayed by limit on proxy connections
+E347      : REJECT: qfile contains one or more errors
+
+E400-E499 : job/modem incompatibility
+E400      : Modem does not support negotiated signalling rate
+E401      : Modem does not support negotiated min scanline time
+E402      : Document is not in a Group 3 or Group 4 compatible format (compression %u)
+E403      : Document was encoded with 2DMMR, but client does not support this data format
+E404      : Document was encoded with 2DMMR, but modem does not support this data format
+E405      : Document was encoded with 2DMMR, but ECM is not being used.
+E406      : Document was encoded with 2DMR, but client does not support this data format
+E407      : Document was encoded with 2DMR, but modem does not support this data format
+E408      : Hyperfine resolution document is not supported by client, image resolution %g x %g lines/mm
+E409      : Hyperfine resolution document is not supported by modem, image resolution %g x %g lines/mm
+E410      : Superfine resolution document is not supported by client, image resolution %g lines/mm
+E411      : Superfine resolution document is not supported by modem, image resolution %g lines/mm
+E412      : 300x300 resolution document is not supported by client, image resolution %g lines/mm
+E413      : 300x300 resolution document is not supported by modem, image resolution %g lines/mm
+E414      : High resolution document is not supported by client, image resolution %g lines/mm
+E415      : High resolution document is not supported by modem, image resolution %g lines/mm
+E416      : Client does not support document page width, max remote page width %g pixels, image width %lu pixels
+E417      : Modem does not support document page width, max page width %g pixels, image width %lu pixels
+E418      : Client does not support document page length, max remote page length %d mm, image length %lu rows (%.2f mm)
+E419      : Modem does not support document page length, max page length %s mm, image length %lu rows (%.2f mm)
+E420      : Requested JPEG parameters are unsupported.
+E421      : Invalid compression for color JPEG fax request.
+E422      : Invalid photometric for color JPEG fax request.
+E423      : Remote does not support JPEG fax request.
+E424      : Modem does not support JPEG fax request.
+E425      : JPEG fax request requires ECM support.
+E426      : Modem does not support JPEG fax resolution.
+E427      : Remote does not support JPEG fax resolution.
+E428      : JPEG fax requires square resolutions.
+E429      : Unsupported JPEG fax resolution %g l/mm.
+
+E500-E599 : paging failures
+E500      : No initial ID response from paging central
+E501      : Login failed multiple times
+E502      : Protocol failure: %s from paging central
+E503      : Protocol failure: %s waiting for go-ahead message
+E504      : Message block not acknowledged by paging central after multiple tries
+E505      : Message block transmit failed paging central rejected it
+E506      : Protocol failure: paging central responded to message block transmit with forced disconnect
+E507      : Protocol failure: %s to message block transmit
+E508      : Paging central rejected content; check PIN
+E509      : Protocol failure: timeout waiting for transaction ACK/NAK from paging central
+

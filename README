@@ -1,0 +1,14 @@
+$Id: README 75 2006-01-31 00:39:53Z faxguy $
+
+Silicon Graphics has seen fit to allow me to give this work away.  It
+is free.  There is no support or guarantee of any sort as to its
+operations, correctness, or whatever.  If you do anything useful with
+all or parts of it you need to honor the copyright notices.   I would
+also be interested in knowing about it and, hopefully, be acknowledged.
+
+Finally, note that this software is called ``HylaFAX'', not ``Hylafax'',
+``hylafax'', and certainly not ``FlexFAX'' (the old name which someone
+else has a copyright on).  If you want to refer to this software use
+``HylaFAX (tm)'' and be sure to honor the Silicon Graphics trademark.
+
+	Sam Leffler

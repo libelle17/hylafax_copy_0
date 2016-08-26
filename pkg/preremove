@@ -1,0 +1,10 @@
+#
+# $Id: preremove 910 2009-02-15 04:21:25Z faxguy $
+#	Tim Rice	Tue Feb 25 11:21:51 PST 1997
+#
+#	preremove
+#
+#cd /opt/HylaFAX
+#sh remove.links
+
+exit 0

@@ -1,0 +1,86 @@
+! $Id: dialrules.uk 864 2008-08-04 13:52:05Z faxguy $
+!
+! HylaFAX (tm) Dialing String Processing Rules
+!   for much of Europe.
+!
+! From: "Ed Cole" <ed@neu.sgi.com>
+!
+! This file describes how to process user-specified dialing strings
+! to create two items:
+!
+! CanonicalNumber: a unique string that is derived from all dialing
+! strings to the same destination phone number.  This string is used
+! by the fax server for ``naming'' the destination. 
+!
+! DialString: the string passed to the modem for use in dialing the
+! telephone.  This string should be void of any characters that might
+! confuse the modem.
+!
+! MODIFIED by Nico Kadel-Garcia <nkg@gmail.com>
+! Stop stripping AreaCode for UK numbers, simply causes confusion
+! with changing UK standards
+!
+! Strip leading '9' from numbers, to deal with users accustomed
+! to leading 9 on manual faxes and yield correct canonical numbers
+!
+! Add option to prepend leading '9' only if needed
+!
+Area=${AreaCode}		! local area code
+Country=${CountryCode}		! local country code
+IDPrefix=${InternationalPrefix}	! prefix for placing an international call
+LDPrefix=${LongDistancePrefix}	! prefix for placing a long distance call
+!
+WS=" 	"			! our notion of white space
+!
+! Convert a phone number to a canonical format:
+!
+!    +<country><areacode><rest>
+!
+! by (possibly) stripping off leading dialing prefixes for
+! long distance and/or international dialing.
+!
+CanonicalNumber := [
+%.*                     =                       ! strip calling card stuff
+[abcABC]		= 2			! these convert alpha to numbers
+[defDEF]		= 3
+[ghiGHI]		= 4
+[jklJKL]		= 5
+[mnoMNO]		= 6
+[prsPRS]		= 7
+[tuvTUV]		= 8
+[wxyWXY]		= 9
+[^+0-9]+                =                       ! strip white space etc.
+! Uncomment if your fax users tend to add a leading 9
+^9${Area}               = ${Area}               ! strip old leading 9
+^9${LDPrefix}           = ${LDPrefix}           ! strip old leading 9
+^${IDPrefix}            = +                     ! replace int. dialing code
+^${LDPrefix}            = +${Country}           ! STD call (long distance)
+! Uncomment appropriate style
+!^[^+]                   = +${Country}${Area}&   ! international style
+^[^+]                   = +${LDPrefix}${Area}&   ! UK style
+]
+!
+! Process a dialing string according to local requirements.
+! These rules do only one transformation: they convert in-country
+! international calls to long-distance calls.
+!
+DialString := [
+[-${WS}.]+              =                       ! strip syntactic sugar
+[abcABC]		= 2			! these convert alpha to numbers
+[defDEF]		= 3
+[ghiGHI]		= 4
+[jklJKL]		= 5
+[mnoMNO]		= 6
+[prsPRS]		= 7
+[tuvTUV]		= 8
+[wxyWXY]		= 9
+! Uncomment these if your fax users tend to add a leading 9
+^9${Area}               = ${Area}               ! strip excess leading 9
+^9${LDPrefix}           = ${LDPrefix}           ! strip excess leading 9
+^${IDPrefix}${Country}  = ${LDPrefix}           ! STD call (long distance)
+^[+]${Country}          = ${LDPrefix}           ! STD call (long distance)
+^[+]                    = ${IDPrefix}           ! international call
+! Uncomment if leading 9, needed to dial out
+! Vulnerable to problems with Area matching numbers
+^[0-9][0-9][0-9][0-9][0-9]+$	= 9,&		! dial 9, for outside calls
+]

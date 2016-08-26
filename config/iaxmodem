@@ -1,0 +1,76 @@
+# $Id: iaxmodem 692 2007-11-06 18:44:20Z faxguy $
+
+#
+# prototype config for the IAXmodem softmodem which uses
+# the spandsp soft-DSP library
+#
+
+# CONFIG:CLASS1:spandsp:.*:.*: Manufacturer=spandsp Model=IAXmodem
+# CONFIG:CLASS1.0:spandsp:.*:.*: Manufacturer=spandsp Model=IAXmodem
+#
+# BEGIN-SERVER
+# END-SERVER
+
+#
+#
+# Modem-related stuff: should reflect modem command interface
+# and hardware connection/cabling (e.g. flow control).
+#
+ModemType:		Class1		# use this to supply a hint
+
+#
+#             *** Caller-ID settings ***
+#
+# Enabling this will use the hfaxd-protocol to set Caller*ID
+#
+#ModemSetOriginCmd:	"AT+VSID=\"%s\",\"%d\""
+#
+# If "glare" during initialization becomes a problem then take
+# the modem off-hook during initialization, and then place it
+# back on-hook when done.
+#
+#ModemResetCmds:	"ATH1\nAT+VCID=1"	# enables CallID display
+#ModemReadyCmds:	ATH0
+#
+# However, glare is mostly avoided by iaxmodem's 5-second internal
+# busy-out that occurs after hangups and resets.  These two settings
+# will help ensure that our reset and initialization periods don't 
+# go beyond that 5-second period.
+#
+ModemResetDelay: 0				# DTR isn't handled, anyway
+ModemSoftResetCmdDelay: 0			# modem reset is complete at "OK"
+
+#
+# You'll likely want Caller*ID display (also displays DID) enabled.
+#
+ModemResetCmds:		AT+VCID=1	# enables CallID display
+#
+# If you are "missing" Caller*ID data on some calls (but not all)
+# and if you do not have adequate glare protection you may want to
+# not answer based on RINGs, but rather enable the CallIDAnswerLength
+# for NDID, disable AT+VCID=1 and do this:
+#
+#RingsBeforeAnswer: 0
+#ModemRingResponse: AT+VRID=1
+
+# The pty apparently does not support changing parity.
+PagerTTYParity:		none
+
+Class1AdaptRecvCmd:	AT+FAR=1
+Class1TMConnectDelay:	400		# counteract quick CONNECT response
+
+#
+# Older iaxmodem versions didn't support V.17 very well.  It can be
+# disabled in this fashion:
+#
+#Class1RMQueryCmd:	"!24,48,72,96"	# V.17 fast-train recv doesn't work well
+#Class1TMQueryCmd:	"!24,48,72,96"	# V.17 fast-train recv doesn't work well
+
+CallIDPattern:          "NMBR="
+CallIDPattern:          "NAME="
+CallIDPattern:		"ANID="
+CallIDPattern:          "NDID="
+#CallIDAnswerLength:	4
+# Uncomment these if you really want them, but you probably don't.
+#CallIDPattern:          "DATE="
+#CallIDPattern:          "TIME="

@@ -1,0 +1,123 @@
+#! @SCRIPT_SH@
+#	$Id: tiff2fax.sh.in 1008 2010-08-31 16:30:28Z faxguy $
+#
+# HylaFAX Facsimile Software
+#
+# Copyright (c) 1990-1996 Sam Leffler
+# Copyright (c) 1991-1996 Silicon Graphics, Inc.
+# HylaFAX is a trademark of Silicon Graphics
+# 
+# Permission to use, copy, modify, distribute, and sell this software and 
+# its documentation for any purpose is hereby granted without fee, provided
+# that (i) the above copyright notices and this permission notice appear in
+# all copies of the software and related documentation, and (ii) the names of
+# Sam Leffler and Silicon Graphics may not be used in any advertising or
+# publicity relating to the software without the specific, prior written
+# permission of Sam Leffler and Silicon Graphics.
+# 
+# THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND, 
+# EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY 
+# WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  
+# 
+# IN NO EVENT SHALL SAM LEFFLER OR SILICON GRAPHICS BE LIABLE FOR
+# ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND,
+# OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+# WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF 
+# LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE 
+# OF THIS SOFTWARE.
+#
+
+#
+# Convert TIFF to fax as needed.
+#
+# tiff2fax [-o output] [-l pagelength] [-w pagewidth]
+#	[-r resolution] [-m maxpages] [-1] [-2] [-3] file ...
+#
+# NB: This script uses the tiffcp program from the TIFF software
+#     distribution to do certain format conversions.  The homepage 
+#     for LibTIFF is http://www.remotesensing.org/libtiff/.
+#
+
+test -f etc/setup.cache || {
+    SPOOL=`pwd`
+    cat<<EOF
+
+FATAL ERROR: $SPOOL/etc/setup.cache is missing!
+
+The file $SPOOL/etc/setup.cache is not present.  This
+probably means the machine has not been setup using the faxsetup(@MANNUM1_8@)
+command.  Read the documentation on setting up HylaFAX before you
+startup a server system.
+
+EOF
+    exit 1
+}
+. etc/setup.cache
+. bin/common-functions
+
+CHECK=$SBIN/tiffcheck			# program to check acceptability
+PS2FAX=bin/ps2fax			# for hard conversions
+PDF2FAX=bin/pdf2fax			# for color conversions
+TIFFCP=$TIFFBIN/tiffcp			# part of the TIFF distribution
+TIFF2PS=$TIFFBIN/tiff2ps		# ditto
+TIFFINFO=$TIFFBIN/tiffinfo		# ditto
+
+jobid=
+simple=no
+out=foo.tif				# default output filename
+df=					# to know if it was never specified
+fil=
+opt=
+color=no				# default to monochrome-only
+
+while test $# != 0
+do case "$1" in
+    -i)	shift; jobid=$1;;
+    -o)	shift; out=$1 ;;
+    -l)	shift; opt="$opt -l $1" ;;
+    -w)	shift; opt="$opt -w $1" ;;
+    -r)	shift; opt="$opt -r $1" ;;
+    -1) opt="$opt $1"; df="g3:1d" ;;
+    -2) opt="$opt $1"; df="g3:2d" ;;
+    -3) opt="$opt $1"; df=g4 ;;
+    -color) color=yes;;
+    -m) shift;;				# NB: not implemented
+    -U) opt="$opt $1" ;;
+    -S) simple=yes;;
+    *)	fil="$fil $1" ;;
+    esac
+    shift
+done
+
+test -z "$fil" && {
+    echo "$0: No input file specified."
+    exit 255
+}
+
+if [ "$simple" = "yes" ]; then
+    # simple, fast conversion for the benefit of intelligent RTFCC
+    $TIFFCP -i -c $df $fil $out
+    exit
+fi
+
+#
+# Apply customizations such as watermarking.   
+#
+if [ -f etc/FaxModify ]; then
+    . etc/FaxModify
+fi
+
+if [ "$color" = "yes" ]; then
+    # Hand it all off to pdf2fax.  We use PDF instead of Postscript
+    # because using PDF requires no decompression at this step in 
+    # the conversion.
+    $TIFF2PDF -o $fil.pdf $fil
+    $PDF2FAX -o $out -i "$jobid" $opt -color $fil.pdf
+    ok=$?
+    $RM -f $fil.pdf
+    exit $?
+else
+    $RM -f "$out.color"
+fi
+
+tiffCheck

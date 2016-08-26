@@ -1,0 +1,36 @@
+#! @SCRIPT_SH@
+#
+# This file is considered part of the software distribution,
+# and any changes made to it may get overwritten in a
+# subsequent upgrade or reinstallation.  Instead of making
+# changes here, directly, consider copying the entire
+# default MIMEConverters directory to a custom location, i.e.
+# /usr/local/sbin/faxmail.custom, set MIMEConverters in 
+# hyla.conf to point there, and make changes there instead.
+#
+
+DISCARDMSG="DISCARDED application/binary goes here"
+FILECMD=file
+
+. @SPOOL@/etc/setup.cache
+
+if [ ! -x $FILECMD ]; then
+    echo "$DISCARDMSG" | $LIBEXEC/textfmt -B
+    exit
+fi
+
+MIMETYPE="`$FILECMD -bi "$1" | $SED 's/;.*//g'`"
+if [ "$MIMETYPE" != "application/octet-stream" ] && [ "$MIMETYPE" != "application/binary" ] && [ -x $LIBDATA/faxmail/$MIMETYPE ]; then
+    echo "running: $LIBDATA/faxmail/$MIMETYPE \"$1\"" >&2
+    $LIBDATA/faxmail/$MIMETYPE "$1"
+else
+    case "$MIMETYPE" in
+	"application/postscript") cat "$1";;
+	"message/rfc822")	cat "$1" | $LIBEXEC/textfmt -B;;
+	text/*) 		cat "$1" | $LIBEXEC/textfmt -B;;
+	*)  echo "Discarding: \"$@\"" >&2
+	    echo "$DISCARDMSG" | $LIBEXEC/textfmt -B;;
+    esac
+fi
+
+exit

@@ -1,0 +1,38 @@
+#
+# prototype config file for Linux ISDN (/dev/ttyIX) Class1 modems
+# Siemens ISURF or
+# Sedlbauer speedfax+ ISDN cards
+#
+#
+# CONFIG:CLASS1:"isdn4linux"-*-*
+#
+#
+# BEGIN-SERVER
+# END-SERVER
+#
+# Modem-related stuff: should reflect modem command interface
+# and hardware connection/cabling (e.g. flow control).
+#
+ModemType:		Class1		# use this to supply a hint
+ModemNoFlowCmd:		AT&K0
+ModemSoftFlowCmd:	AT&K4
+ModemHardFlowCmd:	AT&K3
+#
+# Put your MSN number in here...
+# &E outgoing MSN
+# &L incomming (listen) MSN, may be a list or wildcards
+#
+ModemResetCmds:		AT&E99&L99	# stuff to do when modem is reset
+
+#
+Class1Cmd:		AT+FCLASS=1	# command to enter class 1
+Class1PPMWaitCmd:	AT+FTS=7	# command to stop and wait before PPM
+Class1TCFWaitCmd:	AT+FTS=7	# command to stop and wait before TCF
+Class1EOPWaitCmd:	AT+FTS=9	# command to stop and wait before EOP
+Class1SwitchingCmd:	<delay:9>	# silence between HDLC recv and trans
+Class1TrainingRecovery:	1500		# 1.5sec delay after training failure
+Class1RecvAbortOK:	200		# wait 200ms for abort response
+Class1FrameOverhead:	4		# 4 byte overhead in recvd HDLC frames
+Class1RecvIdentTimer:	40000		# 35+5secs waiting for ident frames
+Class1TCFMaxNonZero:	10		# max 10% of data may be non-zero
+Class1TCFMinRun:	1000		# min run is 2/3rds of TCF duration
